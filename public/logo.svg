@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="20" fill="url(#g)"/>
+  <g transform="translate(20,22)" fill="#fff">
+    <path d="M18 6c0-4.4 3.6-8 8-8s8 3.6 8 8v2h6c2.2 0 4 1.8 4 4v46c0 2.2-1.8 4-4 4H6c-2.2 0-4-1.8-4-4V12c0-2.2 1.8-4 4-4h6V6z" opacity="0.95"/>
+    <path d="M24 30l8 8 16-16" stroke="#065F46" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <text x="50%" y="108" font-family="Inter, Arial" font-size="12" fill="#ffffff" text-anchor="middle">StockSmart</text>
+</svg>

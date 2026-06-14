@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Premium gradient palette */
+    --grad-1: 220 90% 55%; /* deep blue */
+    --grad-2: 270 80% 60%; /* purple */
+    --grad-3: 190 80% 55%; /* cyan */
+    --glass-bg: 255 255% 100%;
+    --glass-blur: 12px;
+    --glow-color: 200 90% 60%;
+    --background: 150 10% 97%;
+    --foreground: 160 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
+
+    --primary: 162 63% 34%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 38 92% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 150 10% 93%;
+    --muted-foreground: 160 10% 45%;
+
+    --accent: 162 40% 92%;
+    --accent-foreground: 162 63% 24%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 12% 89%;
+    --input: 150 12% 89%;
+    --ring: 162 63% 34%;
+
+    --radius: 0.75rem;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 20%;
+    --success: 142 71% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --sidebar-background: 160 30% 10%;
+    --sidebar-foreground: 150 10% 85%;
+    --sidebar-primary: 162 63% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 16%;
+    --sidebar-accent-foreground: 150 10% 90%;
+    --sidebar-border: 160 20% 18%;
+    --sidebar-ring: 162 63% 45%;
+  }
+
+  .dark {
+    --grad-1: 220 90% 50%;
+    --grad-2: 270 80% 55%;
+    --grad-3: 190 80% 50%;
+    --glass-bg: 0 0% 6%;
+    --glass-blur: 10px;
+    --glow-color: 200 80% 60%;
+    --background: 160 30% 6%;
+    --foreground: 150 10% 93%;
+    --card: 160 25% 10%;
+    --card-foreground: 150 10% 93%;
+    --popover: 160 25% 10%;
+    --popover-foreground: 150 10% 93%;
+    --primary: 162 63% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 92% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 160 15% 15%;
+    --muted-foreground: 150 10% 55%;
+    --accent: 160 20% 18%;
+    --accent-foreground: 162 50% 60%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 162 63% 40%;
+    --sidebar-background: 160 30% 6%;
+    --sidebar-foreground: 150 10% 85%;
+    --sidebar-primary: 162 63% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 12%;
+    --sidebar-accent-foreground: 150 10% 90%;
+    --sidebar-border: 160 20% 14%;
+    --sidebar-ring: 162 63% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* font is controlled via ThemeContext: we expose --body-font and data-font on html */
+    font-family: var(--body-font, 'DM Sans'), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Background overrides per font choice + theme
+   We use html[data-font="dm"] and html[data-font="space"] together with .dark
+   to change the --background variable so background color reacts to both font and theme.
+*/
+html[data-font="dm"] {
+  --background: 150 10% 97%;
+}
+html[data-font="dm"].dark {
+  --background: 160 30% 6%;
+}
+
+html[data-font="space"] {
+  /* slightly warmer background for Space Grotesk */
+  --background: 30 20% 98%;
+}
+html[data-font="space"].dark {
+  --background: 220 12% 8%;
+}
+
+@layer utilities {
+  .stat-card {
+    @apply rounded-xl border p-5 shadow-sm transition-all duration-200 hover:shadow-lg;
+    background: linear-gradient(135deg, hsl(var(--grad-1)) 0%, hsl(var(--grad-2)) 50%, hsl(var(--grad-3)) 100%);
+    color: white;
+    box-shadow: 0 8px 30px rgba(16,24,40,0.35);
+    backdrop-filter: blur(var(--glass-blur));
+  }
+  .page-header {
+    @apply mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-bold tracking-tight;
+  }
+  .page-subtitle {
+    @apply text-muted-foreground mt-1;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .glow-on-hover:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 50px rgba(0, 140, 255, 0.15);
+  }
+
+  .count-up {
+    display: inline-block;
+    transform-origin: bottom left;
+  }
+}
